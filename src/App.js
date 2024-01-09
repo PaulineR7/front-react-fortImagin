@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import BattlePassPage from './pages/BattlePassPage';
+import CreateAnAccountPage from './pages/CreateAnAccountPage';
+import LoginPage from './pages/LoginPage';
+import CreateBattlePassPage from './pages/CreateBattlePassPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/battlepass' element={<BattlePassPage />} />
+        <Route path='/accountcreate' element={<CreateAnAccountPage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/createbattlepass' element={<CreateBattlePassPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
