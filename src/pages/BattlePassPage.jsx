@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import './BattlePassPage.scss';
 import React, { useEffect, useState } from "react";
@@ -11,11 +12,11 @@ function BattlePassPage() {
       const battlePassResponse = await fetch("http://localhost:3000/api/battlepass");
       const battlePassResponseData = await battlePassResponse.json();
       setBattlePasses(battlePassResponseData);
-      console.log(battlePassResponseData)
+      
     })();
   }, []);
 
-  console.log(battlepasses)
+  
 
   
    
@@ -32,7 +33,8 @@ function BattlePassPage() {
                         {battlepasses.map((battlepass) => {
                             return(
                                 <div className="battlepass">
-                                    <h3>{battlepass.title}</h3>
+                                    <img className="img-bp" src={battlepass.imageUrl} alt="image" />
+                                    <h3 className="title-article"><Link to={`/battlepassdetails/${battlepass.id}`}>{battlepass.title}</Link></h3>
                                 </div>
                             )
                         })}

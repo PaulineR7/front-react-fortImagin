@@ -12,13 +12,15 @@ function CreateAnAccountPage() {
         const password = event.target.password.value
         const email = event.target.email.value
 
-        const formData = new FormData();
+        const createUserData = {
+            pseudo: pseudo,
+            password: password,
+            email: email,
+            //par défaut l'utilisateur se voit donner le role édit
+            roleId: 2,
+        };
 
-        formData.append("pseudo", JSON.stringify(pseudo))
-        formData.append("password", JSON.stringify(password))
-        formData.append("email", JSON.stringify(email));
-
-        
+          const createUserDataJson = JSON.stringify(createUserData);
         
 
         const createBattlePassResponse = await fetch("http://localhost:3000/api/users", {
@@ -26,13 +28,15 @@ function CreateAnAccountPage() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: formData,
+            body: createUserDataJson,
         });
 
         
 
+        
+
         if (createBattlePassResponse.status === 201) {
-            setMessage("L'utilisateur a bien été créé");
+            setMessage("L'utilisateur a bien été créé, veuillez vous connecter");
         } else {
             setMessage("Erreur !");
         }

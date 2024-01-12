@@ -1,4 +1,4 @@
-.bg-div {
+.block {
     height: 550px;
     border-radius: 65px;
     width: 70%;
@@ -9,10 +9,12 @@
     color: white;
     text-align: center;
     margin: 0 auto;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 .title-bp {
-    font-size: 3rem;
+    font-size: 4rem;
     padding-top: 15px;
     text-transform: uppercase;
 }
@@ -24,7 +26,11 @@
 
 .flex-battlepass {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:10px;
+    margin: auto;
+    // width: fit-content;
     padding-top: 70px;
 }
 
@@ -32,4 +38,20 @@
     height: 300px;
     width: 30%;
     border: 5px white solid;
+    // display: flex;
+    display: inline-flex;
+    flex-direction: column;
+    // justify-content:space-evenly;
+}
+
+.img-bp {
+    height: 270px;
+    width: 100%;
+    border-bottom: 5px solid white;
+}
+
+.title-article {
+    font-size: 2rem;
+    padding: 3%;
+    
 }

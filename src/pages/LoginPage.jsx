@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import './LoginPage.scss'
 import { useState } from "react";
@@ -18,6 +19,7 @@ function LoginPage () {
     };
 
     const loginDataJson = JSON.stringify(loginData);
+    console.log(loginDataJson)
 
     const loginResponse = await fetch("http://localhost:3000/api/users/login", {
       method: "POST",
@@ -31,12 +33,17 @@ function LoginPage () {
     const loginResponseData = await loginResponse.json();
     const token = loginResponseData.data;
 
+    
     if (token) {
         localStorage.setItem("jwt", token)
         setMessage("Vous êtes bien connecté");
     } else {
         setMessage("Erreur lors de la connexion")
     }
+
+    // if(roleId ===1) {
+    //     useNavigate("/admin")
+    // }
 }
     return(
         <>
